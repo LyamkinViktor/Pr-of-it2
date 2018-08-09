@@ -16,7 +16,9 @@
     <div>Просмотров: <?php echo $article->views; ?></div>
 </article>
 
-<a href="/index.php"><div>К списку новостей</div></a>
+<div>
+    <a href="/index.php">К списку новостей</a>
+</div>
 
 </body>
 </html>

@@ -49,5 +49,5 @@ if (isset($_GET['id'])) {
     $article = null;
 }
 
-include __DIR__ . '/templates/form.php';
+include __DIR__ . '/App/Templates/form.php';
 

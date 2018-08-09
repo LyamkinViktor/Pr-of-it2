@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<?php foreach ($news as $article) { ?>
+<?php foreach ($news as $article) : ?>
     <h1><?php echo $article->title; ?></h1>
     <div><?php echo $article->content; ?></div>
     <a href="/article.php?id=<?php echo $article->id; ?>"><div>Читать</div></a>
@@ -17,7 +17,7 @@
     <a href="/form.php?delete&id=<?php echo $article->id; ?>"><div>Удалить</div></a>
     <div>Дата публикации: <?php echo $article->date; ?></div>
     <div>Просмотров: <?php echo $article->views; ?></div>
-<?php } ?>
+<?php endforeach; ?>
 
 <p>
     <h3><a href="/form.php?add">Добавить новость</a></h3>
