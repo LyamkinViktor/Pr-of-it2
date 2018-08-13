@@ -7,18 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Статья</title>
 </head>
-<body>
+    <body>
 
-<article>
-    <h1><?php echo $article->title; ?></h1>
-    <div><?php echo $article->content; ?></div>
-    <div>Дата публкации: <?php echo $article->date; ?></div>
-    <div>Просмотров: <?php echo $article->views; ?></div>
-</article>
+        <article>
+            <h1><?php echo $article->title; ?></h1>
+            <div><?php echo $article->content; ?></div>
+            <div><i>Автор статьи: <?php echo $article->author->name; ?></i></div>
+        </article>
 
-<div>
-    <a href="/index.php">К списку новостей</a>
-</div>
+        <div>
+            <a href="/index.php">К списку новостей</a>
+        </div>
 
-</body>
+    </body>
 </html>

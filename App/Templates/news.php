@@ -12,18 +12,20 @@
 <?php foreach ($news as $article) : ?>
     <h1><?php echo $article->title; ?></h1>
     <div><?php echo $article->content; ?></div>
+    <div><i>Автор статьи: <?php if (null != ($article->author_id)) {
+                $article->author = \App\Models\Author::findById($article->author_id);
+            }
+            echo $article->author->name; ?></i></div>
     <a href="/article.php?id=<?php echo $article->id; ?>"><div>Читать</div></a>
-    <a href="/form.php?edit&id=<?php echo $article->id; ?>" ><div>Редактировать</div></a>
-    <a href="/form.php?delete&id=<?php echo $article->id; ?>"><div>Удалить</div></a>
-    <div>Дата публикации: <?php echo $article->date; ?></div>
-    <div>Просмотров: <?php echo $article->views; ?></div>
 <?php endforeach; ?>
 
 <p>
-    <h3><a href="/form.php?add">Добавить новость</a></h3>
+<h3><a href="/action.php?add">Добавить новость</a></h3>
 </p>
 
-
+<?php  if (true == \App\Models\Admin::access()) { ?>
+    <a href="/admin.php" ">Админ панель</a>
+<?php } ?>
 
 
 </body>

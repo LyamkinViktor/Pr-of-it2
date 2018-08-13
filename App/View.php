@@ -9,7 +9,7 @@ class View implements \Countable
 {
     protected $data = [];
 
-    use ViewTrait;
+    use MagicMethodsTrait;
 
     /*
      *     public function assign($name, $value)

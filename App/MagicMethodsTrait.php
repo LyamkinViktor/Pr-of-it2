@@ -3,7 +3,7 @@
 namespace App;
 
 
-trait ViewTrait
+trait MagicMethodsTrait
 {
     public function __set($name, $value)
     {

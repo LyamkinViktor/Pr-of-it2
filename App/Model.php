@@ -36,11 +36,11 @@ abstract class Model
     }
 
 
-    public function insert() {
-        /*{
+    public function insert()
+    {
         if (!$this->isNew()) {
             return false;
-        }*/
+        }
 
         $properties = get_object_vars($this);
 
@@ -52,12 +52,10 @@ abstract class Model
             if ('id' == $name) {
                 continue;
             }
-            if ('date' == $name) {
+            if (null == $value) {
                 continue;
             }
-            if ('views' == $name) {
-                continue;
-            }
+
             $cols[] = $name;
             $binds[] = ':' . $name;
             $data[':' . $name] = $value;
@@ -67,10 +65,12 @@ abstract class Model
         VALUES (' . implode(', ', $binds) . ')';
 
         $db = new Db();
+        $res = $db->execute($sql, $data);
 
         $this->id = $db->lastInsertId();
 
-        return $db->execute($sql, $data);
+        //var_dump($data);
+        return $res;
     }
 
 
@@ -90,16 +90,12 @@ abstract class Model
             if ('id' == $name) {
                 continue;
             }
-            if ('date' == $name) {
-                continue;
-            }
-            if ('views' == $name) {
+            if (null == $value) {
                 continue;
             }
             $cols[] = $name . ' = :' . $name;
             $data[':' . $name] = ($value == null ? '' : $value);
         }
-
         //var_dump($properties);
         //var_dump($cols);
         //var_dump($data);
@@ -133,5 +129,6 @@ abstract class Model
         //echo $sql;
         return $res;
     }
+
 
 }

@@ -13,7 +13,7 @@ if (isset($_POST['delete'])) {
 
     $article->delete();
 
-    header('Location: /index.php');
+    header('Location: /admin.php');
 }
 
 if (isset($_POST['add'])) {
@@ -24,7 +24,7 @@ if (isset($_POST['add'])) {
 
     $article->insert();
 
-    header('Location: /index.php');
+    header('Location: /admin.php');
 }
 
 if (isset($_POST['edit'])) {
@@ -37,7 +37,7 @@ if (isset($_POST['edit'])) {
 
     $article->update();
 
-    header('Location: /index.php');
+    header('Location: /admin.php');
 
 }
 

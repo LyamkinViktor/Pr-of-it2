@@ -5,6 +5,7 @@ namespace App\Models;
 
 use App\Model;
 use App\Db;
+use App\Models\Author;
 
 class Article extends Model
 {
@@ -12,8 +13,9 @@ class Article extends Model
 
     public $title;
     public $content;
-    public $date;
-    public $views;
+    public $author_id;
+    public $author;
+
 
     public function getModelName()
     {
@@ -23,8 +25,9 @@ class Article extends Model
     public static function getLastNews($number)
     {
         $db = new Db();
-        $sql = 'SELECT * FROM ' . self::$table . ' ORDER BY date DESC LIMIT ' . $number;
-        $news = $db->query($sql, self::class);
+        $sql = 'SELECT * FROM ' . self::$table . ' ORDER BY date DESC LIMIT :n';
+        $params = [':n' => $number];
+        $news = $db->query($sql, self::class, $params);
         return $news;
     }
 
